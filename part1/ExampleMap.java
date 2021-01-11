@@ -9,11 +9,15 @@ class ExampleMap
    {
       List<String> overEnrolledStudents = new LinkedList<>();
 
-      /*
-         Build a list of the names of students currently enrolled
-         in a number of units strictly greater than the unitThreshold.
-      */
-
+      for(String key: courseListsByStudentName.keySet()) {
+         int units = 0;
+         for (Course c:courseListsByStudentName.get(key)){
+            units+=c.getNumUnits();
+         }
+         if(units>unitThreshold){
+            overEnrolledStudents.add(key);
+         }
+      }
       return overEnrolledStudents;      
    }
 }
